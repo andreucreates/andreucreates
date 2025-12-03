@@ -1,0 +1,534 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #4b4949;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.github-container {
+  color-scheme: light;
+  display: flex;
+  justify-content: flex-end;
+  background-color: white;
+  /* border-radius: 50%; */
+  overflow: hidden;
+  border-width: 0px;
+  border-color: black;
+}
+
+.github-btn {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid black;
+  padding: 0;
+  cursor: pointer;
+}
+
+.github-btn img{
+  height: 50px;
+  width: auto;
+  cursor: pointer;
+  object-fit: contain;
+}
+
+.work-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+}
+
+.work-text {
+  flex: 2;
+}
+
+.work-logos {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.work-logos img {
+  width: 150px;
+  height: auto;
+  display: block;
+}
+
+.horizontal-div {
+  display: flex;
+  flex-direction: row;
+}
+
+.btn-details {
+  background-color: transparent;
+  border: none;
+  cursor: "pointer"
+}
+
+.componentDiv h2{
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.topbar {
+  height: 100px;display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 0 12px; border: 2px solid black; background: #fff;
+  position: sticky; top: 0; z-index: 30; gap: 40px;
+}
+.topbar h1 {
+  color:#111827;
+  font-weight: bolder;
+}
+.hamburger {
+  width: 40px; height: 40px; display: inline-flex; flex-direction: column;
+  justify-content: center; gap: 5px; border: 0; background: transparent; cursor: pointer; align-items: center;
+}
+.hamburger span {
+  width: 24px; height: 2px; background: #111827; display: block; border-radius: 2px;
+}
+
+/* Overlay */
+.drawer-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.0); 
+  pointer-events: none; transition: background 200ms ease; z-index: 40;
+}
+.drawer-overlay.show {
+  background: rgba(0,0,0,0.4); pointer-events: auto;
+}
+
+/* Panel lateral */
+.drawer-panel {
+  position: fixed; inset: 0 auto 0 0; width: 280px; max-width: 85vw;
+  background: #fff; transform: translateX(-100%); transition: transform 220ms ease;
+  box-shadow: 2px 0 12px rgba(0,0,0,0.15); z-index: 50; padding: 12px 8px;
+}
+.drawer-panel.open { transform: translateX(0); }
+
+.close-btn {
+  border: none; background: transparent; font-size: 24px; line-height: 1;
+  cursor: pointer; padding: 6px 10px; margin-left: auto; display: block;
+}
+
+.menu-list { list-style: none; padding: 8px 12px; margin: 8px 0; }
+.menu-list li { margin: 8px 0; }
+.menu-list a {
+  display: block; padding: 10px 12px; border-radius: 8px; text-decoration: none; color: #111827;
+}
+.menu-list a:hover { background: #f3f4f6; }
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  border: 2px solid black;
+}
+
+footer h2 {
+  margin: 0;
+}
+
+.contact-button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease
+}
+
+.studies-div {
+  display: flex;
+  flex-direction: row;
+}
+
+.etsinf-logo {
+  width: auto;
+  height: 100px;
+  margin-left: 100px;
+  margin-top: 50px
+}
+
+.app-section {
+    padding: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: "Inter", sans-serif;
+}
+
+.app-section h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.4rem;
+    color: #fff;
+}
+
+.language-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 20px;
+}
+
+.language-item {
+  margin: 0;
+}
+
+.app-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.app-card {
+    background: #ffffff;
+    padding: 20px 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.app-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.language-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: space-between;
+}
+
+.language-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.language-name {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #222;
+}
+
+.language-level {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.language-toggle {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  color:#000;
+  background: #f9fafb;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.language-toggle:hover {
+  background: #eef2ff;
+  border-color: #c7d2fe;
+}
+
+.language-skills {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.skill-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 0.75rem;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.skill-label {
+    opacity: 0.85;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress-bar::-webkit-progress-bar {
+    background-color: #e5e7eb;
+    border-radius: 999px;
+}
+
+.progress-bar::-webkit-progress-value {
+    background-color: #fba4a4;
+    border-radius: 999px;
+}
+
+.progress-bar::-moz-progress-bar {
+    background-color: #fba4a4;
+}
+
+.app-card h2 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    color: #444;
+}
+
+.app-card h2 {
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.app-card h3 {
+  margin: 5px 0;
+  color: #666;
+  font-weight: normal;
+}
+
+.app-card h4 {
+  margin: 5px 0;
+  color: #666;
+  font-weight: normal;
+}
+
+.app-card h6 {
+  margin: 5px 0;
+  color: #888;
+  font-weight: normal;
+}
+
+.app-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.app-card li {
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+    color: #000;
+}
+
+.app-card li:last-child {
+    border-bottom: none;
+}
+
+/* Pequeño efecto al pasar el ratón */
+.app-card li:hover {
+    color: #91800D;
+}
+
+.home-card {
+  border-left: 4px solid #b4b065;
+}
+
+.home-intro {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: #444;
+}
+
+.home-bio {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #444;
+}
+
+.home-name {
+    font-weight: 600;
+}
+
+/* Estilos de ContactForm */
+
+/* Fondo semitransparente tipo modal */
+.contact-form-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+}
+
+/* Tarjeta del formulario */
+.contact-form {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px 28px;
+    max-width: 420px;
+    width: 90%;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    animation: fadeInUp 0.25s ease-out;
+}
+
+/* Cabecera: título + botón cerrar */
+.contact-form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.contact-form-header h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #222;
+}
+
+.contact-form-close {
+    border: none;
+    background: transparent;
+    font-size: 1.2rem;
+    cursor: pointer;
+    line-height: 1;
+    color: #666;
+    transition: transform 0.1s ease, color 0.1s ease;
+}
+
+.contact-form-close:hover {
+    color: #000;
+    transform: scale(1.1);
+}
+
+/* Subtítulo */
+.contact-form-subtitle {
+    margin: 0 0 16px 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Cuerpo del formulario */
+.contact-form-body {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* Grupo campo + etiqueta */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Inputs y textarea */
+.form-group input,
+.form-group textarea {
+    border-radius: 8px;
+    border: 1px solid #d0d7de;
+    padding: 8px 10px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.25);
+}
+
+/* Botón enviar */
+.contact-form-submit {
+    margin-top: 8px;
+    width: 100%;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    background: #b4b065;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.1s ease, opacity 0.1s ease;
+}
+
+.contact-form-submit:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px #dfddbd;
+}
+
+.contact-form-submit:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Mensaje de éxito */
+.contact-form-success {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #15803d;
+    background: #dcfce7;
+    border-radius: 999px;
+    padding: 6px 10px;
+    text-align: center;
+}
+
+/* Animación entrada tarjeta */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
