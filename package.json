@@ -5,15 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
-
-    "dev:client": "vite",                 
-    "dev:server": "npm --prefix services run dev", 
-
+    "dev:client": "vite",
+    "dev:server": "npm --prefix services run dev",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@react-email/components": "^0.5.7",
+    "@supabase/supabase-js": "^2.90.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",

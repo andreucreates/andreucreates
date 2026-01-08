@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { createMensaje } from "../../services/mensajes.js";
 
 type ContactFormProps = {
     setContactFormVisibility: React.Dispatch<React.SetStateAction<boolean>>;
@@ -9,28 +10,55 @@ export default function ContactForm({ setContactFormVisibility }: ContactFormPro
     const [correo, setCorreo] = useState("");
     const [mensaje, setMensaje] = useState("");
     const [enviado, setEnviado] = useState(false);
+    const [enviando, setEnviando] = useState(false);
+
+    // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    //     e.preventDefault();
+
+    //     const response = await fetch("http://localhost:3001/send-email", {
+    //         method: "POST",
+    //         headers: { "Content-Type": "application/json" },
+    //         body: JSON.stringify({ nombre, correo, mensaje }),
+    //     });
+
+    //     const data = await response.json();
+
+    //     if (data.ok) {
+    //         setEnviado(true);
+    //         setNombre("");
+    //         setCorreo("");
+    //         setMensaje("");
+
+    //         // Oculta el mensaje de enviado después de unos segundos, si quieres
+    //         setTimeout(() => setEnviado(false), 4000);
+    //     }
+    // };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const response = await fetch("http://localhost:3001/send-email", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ nombre, correo, mensaje }),
-        });
+        setEnviando(true);
+        const payload = {
+            nombre: nombre.trim(),
+            correo: correo.trim(),
+            mensaje: mensaje.trim(),
+        };
 
-        const data = await response.json();
+        try {
+            await createMensaje(payload);
 
-        if (data.ok) {
             setEnviado(true);
             setNombre("");
             setCorreo("");
             setMensaje("");
 
-            // Oculta el mensaje de enviado después de unos segundos, si quieres
             setTimeout(() => setEnviado(false), 4000);
+        } catch (err: unknown) {
+            console.error("Error guardando el mensaje", err);
+        } finally {
+            setEnviando(false);
         }
-    };
+    }
 
     return (
         <div className="contact-form-overlay">
@@ -86,8 +114,8 @@ export default function ContactForm({ setContactFormVisibility }: ContactFormPro
                         />
                     </div>
 
-                    <button type="submit" className="contact-form-submit">
-                        Enviar
+                    <button type="submit" className="contact-form-submit" disabled={enviando}>
+                        {enviando ? "Enviando..." : "Enviar"}
                     </button>
 
                     {enviado && <p className="contact-form-success">Mensaje enviado ✔</p>}
