@@ -17,13 +17,13 @@ const idiomas: Idioma[] = [
 
 function SkillMeter({ label, value }: { label: string; value: number }) {
     return (
-        <li className="skill-row">
-            <span className="skill-label">{label}</span>
+        <li className="flex items-center gap-3 p-3">
+            <span className="w-20 shrink-0 text-sm text-slate-300">{label}</span>
             <progress
                 value={value}
                 max={100}
                 aria-label={`${label} ${value}`}
-                className="progress-bar"
+                className="progress-bar h-2 w-full rounded-full bg-slate-800"
             />
         </li>
     );
@@ -45,42 +45,42 @@ export default function Languages() {
     };
 
     return (
-        <div className="app-section app-section--languages">
-            <h1>Idiomas</h1>
+        <div className="flex flex-col gap-8 mb-10">
+            <h1 className="text-2xl font-semibold">Idiomas</h1>
 
-            <ul className="language-list">
+            <ul className="flex flex-col gap-4">
                 {idiomas.map((idioma, i) => {
                     const isOpen = abiertos.has(i);
                     const panelId = `idioma-panel-${i}`;
 
                     return (
-                        <li key={idioma.nombre} className="language-item">
-                            <div className="app-card language-card">
-                                <div className="language-header">
+                        <li key={idioma.nombre}>
+                            <div className="flex flex-col gap-4 rounded-2xl border border-slate-800 bg-slate-950 p6">
+                                <div className="flex items-center gap-4 p-3">
                                     <button
                                         onClick={() => toggle(i)}
                                         aria-expanded={isOpen}
                                         aria-controls={panelId}
-                                        className="language-toggle"
+                                        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-slate-700 text-lg font-semibold hover:bg-slate-800 transition-colors"
                                     >
                                         {isOpen ? "−" : "+"}
                                     </button>
 
-                                    <div className="language-title">
-                                        <span className="language-name">{idioma.nombre}</span>
-                                        <span className="language-level">{idioma.nivelGeneral}</span>
+                                    <div className="flex flex-col">
+                                        <span className="text-lg font-semibold">{idioma.nombre}</span>
+                                        <span className="text-sm text-indigo-400">{idioma.nivelGeneral}</span>
                                     </div>
                                 </div>
 
                                 {isOpen && (
                                     <ul
                                         id={panelId}
-                                        className="language-skills"
+                                        className="flex flex-col gap-3 border-t border-slate-800 pt-4"
                                     >
-                                        <SkillMeter label="Escribir" value={idioma.skills.escribir} />
-                                        <SkillMeter label="Leer" value={idioma.skills.leer} />
-                                        <SkillMeter label="Hablar" value={idioma.skills.hablar} />
-                                        <SkillMeter label="Escuchar" value={idioma.skills.escuchar} />
+                                        <SkillMeter label="Expresión escrita" value={idioma.skills.escribir} />
+                                        <SkillMeter label="Comprensión lectora" value={idioma.skills.leer} />
+                                        <SkillMeter label="Expresión oral" value={idioma.skills.hablar} />
+                                        <SkillMeter label="Comprensión auditiva" value={idioma.skills.escuchar} />
                                     </ul>
                                 )}
                             </div>

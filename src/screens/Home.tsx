@@ -1,23 +1,19 @@
 export default function Home() {
     return (
-        <div className="app-section">
-            <h1>Hola, soy Andreu</h1>
-
-            <div className="app-card home-card">
-                <p className="home-intro">
-                    ¡Bienvenido a mi espacio! Aquí comparto una muestra de mi trabajo: mis proyectos,
-                    las tecnologías que utilizo, los idiomas que hablo, así como mi formación académica
-                    y experiencia profesional. También encontrarás algunos detalles sobre quién soy y
-                    cómo entiendo el desarrollo de software.
+        <div className="flex flex-col gap-8 mb-10">
+            <h1 className="text-2xl font-bold">Sobre mí</h1>
+            <div className="flex flex-col gap-4 rounded-2xl border border-slate-800 bg-slate-950 p-6">
+                <p>
+                    ¡Bienvenido a mi espacio!
                 </p>
-
-                <p className="home-bio">
-                    Me llamo <span className="home-name">Andreu</span>, tengo 23 años y estoy finalizando el
-                    Grado en Ingeniería Informática, especializado en la rama de{" "}
-                    <strong>Ingeniería de Software</strong>. Actualmente estoy buscando empleo como
-                    programador, con interés tanto en <strong>desarrollo frontend</strong> como{" "}
-                    <strong>backend</strong>. Poseo experiencia práctica en ambos ámbitos gracias a
-                    proyectos personales y a mi experiencia profesional.
+                <p className="text-slate-300 leading-relaxed">
+                    Me llamo <span className="text-indigo-400 font-semibold">Andreu</span> y estoy finalizando el Grado en Ingeniería Informática, especializado en <strong>Ingeniería de Software</strong>. Mi perfil está orientado al desarrollo de aplicaciones, tanto <strong>frontend como backend</strong>, ámbitos en los que he adquirido experiencia a través de proyectos personales y de mi experiencia profesional.
+                </p>
+                <p className="text-slate-300 leading-relaxed">
+                    Actualmente busco incorporarme profesionalmente como <strong>desarrollador de software</strong>, con especial interés en seguir creciendo en el diseño y desarrollo de aplicaciones, afrontar nuevos retos técnicos y participar en proyectos en los que pueda continuar ampliando mis conocimientos.
+                </p>
+                <p className="text-slate-300 leading-relaxed">
+                    En esta web puedes conocer algunos de los <strong>proyectos que he desarrollado</strong>, las <strong>tecnologías con las que trabajo</strong>, mi formación y experiencia profesional, así como mi manera de entender el desarrollo de software.
                 </p>
             </div>
         </div>
