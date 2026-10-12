@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createMensaje } from "../services/mensajes.js";
+import { createMensaje } from "../services/mensajesServices.js";
 
 type ContactFormProps = {
     setContactFormVisibility: React.Dispatch<React.SetStateAction<boolean>>;
