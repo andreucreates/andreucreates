@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { createMensaje } from "../services/mensajesServices.js";
+import { Toaster, toast } from "react-hot-toast";
 
 type ContactFormProps = {
     setContactFormVisibility: React.Dispatch<React.SetStateAction<boolean>>;
@@ -36,6 +37,11 @@ export default function ContactForm({ setContactFormVisibility }: ContactFormPro
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        if (nombre === "" || correo === "" || mensaje === "") {
+            toast.error("Campos incompletos. Por favor, revise que todos los campos hayan sido rellenados.")
+            return
+        }
 
         setEnviando(true);
         const payload = {
@@ -128,6 +134,7 @@ export default function ContactForm({ setContactFormVisibility }: ContactFormPro
                     {enviado && <p className="text-sm text-emerald-400">Mensaje enviado ✔</p>}
                 </form>
             </div>
+            <Toaster position="top-center"/>
         </div>
     );
 }
